@@ -1,14 +1,4 @@
 import 'package:flutter/material.dart';
+import 'core/app/app.dart' show App;
 
-void main() {
-  runApp(
-    MaterialApp(
-      themeMode: ThemeMode.system,
-      darkTheme: ThemeData.dark(),
-      theme: ThemeData.light(),
-      title: "On Boarding Screens",
-      debugShowCheckedModeBanner: false,
-      // home: ,
-    ),
-  );
-}
+void main() => runApp(App());
