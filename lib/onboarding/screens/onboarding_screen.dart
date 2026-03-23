@@ -22,7 +22,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: Column(
         children: [
           /// Skip Button
-          SkipButtonWidget(onTap: () => debugPrint("Skip")),
+          SkipButtonWidget(onTap: () => onSkipPress()),
           const SizedBox(height: 80),
 
           /// Onboarding Data
@@ -44,4 +44,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     ),
   );
+
+  /// Skip Button Press
+  void onSkipPress() {
+    _pageController.animateToPage(
+      onboardingData.length - 1,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
 }
