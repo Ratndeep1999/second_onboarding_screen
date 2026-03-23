@@ -24,7 +24,7 @@ class SharedPrefService {
   }
 
   /// Clear Onboarding State
-  Future<void> clearOnboardingState() async {
+  static Future<void> clearOnboardingState() async {
     final _prefs = await SharedPreferences.getInstance();
     _prefs.clear();
   }
