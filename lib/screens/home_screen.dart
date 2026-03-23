@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seccond_onboarding_screen/core/services/shared_pref_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +13,10 @@ class HomeScreen extends StatelessWidget {
     ),
     body: SafeArea(
       child: Center(
-        child: FilledButton(onPressed: () {}, child: Text("Clear State")),
+        child: FilledButton(
+          onPressed: SharedPrefService.clearOnboardingState,
+          child: Text("Clear State"),
+        ),
       ),
     ),
   );
