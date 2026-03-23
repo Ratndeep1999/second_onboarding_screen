@@ -3,6 +3,7 @@ import 'package:seccond_onboarding_screen/onboarding/data/onboarding_data.dart';
 import 'package:seccond_onboarding_screen/onboarding/widgets/dot_indicator_widget.dart';
 import 'package:seccond_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
 import 'package:seccond_onboarding_screen/onboarding/widgets/skip_button_widget.dart';
+import 'package:seccond_onboarding_screen/screens/home_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -38,7 +39,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             length: onboardingData.length,
             pageIndex: pageIndex,
             isLastPage: (onboardingData.length == pageIndex + 1),
-            onPress: () => debugPrint("Get Started"),
+            onPress: onGetStartedPress,
           ),
         ],
       ),
@@ -52,5 +53,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+  }
+
+  /// Get Started Button Press
+  void onGetStartedPress() {
+    if (pageIndex == onboardingData.length - 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => HomeScreen()),
+      );
+    } else {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 }
