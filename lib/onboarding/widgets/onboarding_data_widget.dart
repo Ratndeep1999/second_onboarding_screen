@@ -4,47 +4,54 @@ import 'package:flutter_svg/svg.dart';
 class OnboardingDataWidget extends StatelessWidget {
   const OnboardingDataWidget({
     super.key,
+    required this.length,
     required this.imagePath,
     required this.title,
     required this.desc,
   });
 
+  final int length;
   final String imagePath;
   final String title;
   final String desc;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        /// Image
-        SvgPicture.asset(imagePath),
-        const SizedBox(height: 60),
+    return Expanded(
+      child: PageView.builder(
+        itemCount: length,
+        itemBuilder: (BuildContext context, int index) => Column(
+          children: [
+            /// Image
+            SvgPicture.asset(imagePath),
+            const SizedBox(height: 60),
 
-        /// Title
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 28,
-            letterSpacing: 2,
-            color: Colors.black38,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        const SizedBox(height: 30),
+            /// Title
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 28,
+                letterSpacing: 2,
+                color: Colors.black38,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const SizedBox(height: 30),
 
-        /// Description
-        Text(
-          desc,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20,
-            wordSpacing: 2,
-            color: Colors.black38,
-            fontWeight: FontWeight.w400,
-          ),
+            /// Description
+            Text(
+              desc,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                wordSpacing: 2,
+                color: Colors.black38,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
