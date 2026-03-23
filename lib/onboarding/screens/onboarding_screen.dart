@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:seccond_onboarding_screen/onboarding/data/onboarding_data.dart';
+import 'package:seccond_onboarding_screen/onboarding/widgets/dot_indicator_widget.dart';
+import 'package:seccond_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
+import 'package:seccond_onboarding_screen/onboarding/widgets/skip_button_widget.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -9,6 +12,9 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  final PageController _pageController = PageController();
+  int pageIndex = 0;
+
   @override
   Widget build(BuildContext context) => Scaffold(
     body: SafeArea(
@@ -16,113 +22,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: Column(
         children: [
           /// Skip Button
-          SkipButtonWidget(),
-          SizedBox(height: 80),
+          SkipButtonWidget(onTap: () => debugPrint("Skip")),
+          const SizedBox(height: 80),
 
           /// Onboarding Data
-          OnboardingDataWidget(),
-          SizedBox(height: 60),
+          OnboardingDataWidget(
+            onboardingData: onboardingData,
+            pageCtrl: _pageController,
+            onPageChanged: (index) => setState(() => (pageIndex = index)),
+          ),
+          const SizedBox(height: 60),
 
           /// Onboarding Page Indicator
-          DotIndicatorWidget(),
-          GetStartedButtonWidget(),
+          DotIndicatorWidget(
+            length: onboardingData.length,
+            pageIndex: pageIndex,
+            isLastPage: (onboardingData.length == pageIndex + 1),
+            onPress: () => debugPrint("Get Started"),
+          ),
         ],
       ),
     ),
   );
-}
-
-class GetStartedButtonWidget extends StatelessWidget {
-  const GetStartedButtonWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return FilledButton(onPressed: () {}, child: Text("Get Started"));
-  }
-}
-
-class DotIndicatorWidget extends StatelessWidget {
-  const DotIndicatorWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        4,
-        (index) => Container(
-          height: 10,
-          width: 10,
-          margin: EdgeInsets.symmetric(horizontal: 8),
-          decoration: BoxDecoration(
-            color: Colors.black26,
-            shape: BoxShape.circle,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class OnboardingDataWidget extends StatelessWidget {
-  const OnboardingDataWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        /// Image
-        SvgPicture.asset("assets/onboarding/onboarding_1.svg"),
-        SizedBox(height: 60),
-
-        /// Title
-        Text(
-          "Onboarding Title One",
-          style: TextStyle(
-            fontSize: 28,
-            letterSpacing: 2,
-            color: Colors.black38,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        SizedBox(height: 30),
-
-        /// Description
-        Text(
-          "This is the description of onboarding title one.",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20,
-            wordSpacing: 2,
-            color: Colors.black38,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class SkipButtonWidget extends StatelessWidget {
-  const SkipButtonWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: AlignmentGeometry.topRight,
-      child: InkWell(
-        splashColor: Colors.transparent,
-        onTap: () => debugPrint("Skip button press"),
-        child: Text(
-          "Skip",
-          textAlign: TextAlign.end,
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            color: Colors.black45,
-          ),
-        ),
-      ),
-    );
-  }
 }
