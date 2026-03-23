@@ -17,5 +17,9 @@ class SharedPrefService {
     await _prefs.setBool(_onBoardingKey, true);
   }
 
-  // Get Onboarding Seen
+  /// Get Onboarding Seen
+  static Future<bool> getOnboardingSeen() async {
+    final _prefs = await SharedPreferences.getInstance();
+    return _prefs.getBool(_onBoardingKey) ?? false;
+  }
 }
