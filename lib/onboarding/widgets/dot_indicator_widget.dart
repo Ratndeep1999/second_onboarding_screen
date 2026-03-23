@@ -17,7 +17,6 @@ class DotIndicatorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /// Check Condition
     return isLastPage
         /// Get Started Button
         ? GetStartedButtonWidget(onPress: onPress)
