@@ -22,4 +22,10 @@ class SharedPrefService {
     final _prefs = await SharedPreferences.getInstance();
     return _prefs.getBool(_onBoardingKey) ?? false;
   }
+
+  /// Clear Onboarding State
+  Future<void> clearOnboardingState() async {
+    final _prefs = await SharedPreferences.getInstance();
+    _prefs.clear();
+  }
 }
