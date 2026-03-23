@@ -3,7 +3,9 @@ import 'package:seccond_onboarding_screen/onboarding/screens/onboarding_screen.d
 import 'package:seccond_onboarding_screen/screens/home_screen.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({super.key, required this.isSeen});
+
+  final bool isSeen;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.light,
       darkTheme: ThemeData.dark(),
       theme: ThemeData.light(),
-      home: OnboardingScreen(),
+      home: isSeen ? HomeScreen() : OnboardingScreen(),
     );
   }
 }
