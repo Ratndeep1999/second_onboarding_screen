@@ -16,22 +16,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: Column(
         children: [
           /// Skip Button
-          Align(
-            alignment: AlignmentGeometry.topRight,
-            child: InkWell(
-              splashColor: Colors.transparent,
-              onTap: () => debugPrint("Skip button press"),
-              child: Text(
-                "Skip",
-                textAlign: TextAlign.end,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black45,
-                ),
-              ),
-            ),
-          ),
+          SkipButton(),
           SizedBox(height: 80),
 
           /// Onboarding Data
@@ -89,4 +74,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
     ),
   );
+}
+
+class SkipButton extends StatelessWidget {
+  const SkipButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: AlignmentGeometry.topRight,
+      child: InkWell(
+        splashColor: Colors.transparent,
+        onTap: () => debugPrint("Skip button press"),
+        child: Text(
+          "Skip",
+          textAlign: TextAlign.end,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            color: Colors.black45,
+          ),
+        ),
+      ),
+    );
+  }
 }
