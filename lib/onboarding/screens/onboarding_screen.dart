@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seccond_onboarding_screen/core/services/shared_pref_service.dart';
 import 'package:seccond_onboarding_screen/onboarding/data/onboarding_data.dart';
 import 'package:seccond_onboarding_screen/onboarding/widgets/dot_indicator_widget.dart';
 import 'package:seccond_onboarding_screen/onboarding/widgets/onboarding_data_widget.dart';
@@ -58,6 +59,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   /// Get Started Button Press
   void onGetStartedPress() {
     if (pageIndex == onboardingData.length - 1) {
+      /// Store onBoarding State
+      SharedPrefService.setOnboardingSeen();
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (_) => HomeScreen()),
