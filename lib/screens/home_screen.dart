@@ -5,7 +5,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: Text("Home Screen")),
+    appBar: AppBar(
+      title: Text("Home Screen"),
+      backgroundColor: Colors.orange.shade300,
+      centerTitle: true,
+    ),
     body: SafeArea(child: Column()),
   );
 }
