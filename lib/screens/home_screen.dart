@@ -10,6 +10,10 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.orange.shade300,
       centerTitle: true,
     ),
-    body: SafeArea(child: Column()),
+    body: SafeArea(
+      child: Center(
+        child: FilledButton(onPressed: () {}, child: Text("Clear State")),
+      ),
+    ),
   );
 }
