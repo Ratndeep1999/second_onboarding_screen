@@ -17,6 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 
 ![Onboarding Screen 1](assets/result/onboarding_screen_1.png)
-![Onboarding Screen 1](assets/result/onboarding_screen_2.png)
-![Onboarding Screen 1](assets/result/onboarding_screen_3.png)
-![Onboarding Screen 1](assets/result/onboarding_screen_4.png)
+![Onboarding Screen 2](assets/result/onboarding_screen_2.png)
+![Onboarding Screen 3](assets/result/onboarding_screen_3.png)
+![Onboarding Screen 4](assets/result/onboarding_screen_4.png)
